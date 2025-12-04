@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 80;
 const DOWNLOADS_DIR = process.env.DOWNLOADS_DIR || '/tmp/downloads';
 
 // Логируем запуск
@@ -237,11 +237,11 @@ app.use((err, req, res, next) => {
     });
 });
 
-// Запуск сервера
-app.listen(PORT, () => {
+// Запуск сервера (явно на 0.0.0.0 для Docker)
+app.listen(PORT, '0.0.0.0', () => {
     console.log('🚀 Pinterest Video Downloader Server');
     console.log('=====================================');
-    console.log(`🌐 Сервер запущен: http://localhost:${PORT}`);
+    console.log(`🌐 Сервер запущен: http://0.0.0.0:${PORT}`);
     console.log(`📁 Папка для загрузок: ${DOWNLOADS_DIR}`);
     console.log(`⏰ Запущено: ${new Date().toLocaleString()}`);
     console.log('');

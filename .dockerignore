@@ -1,25 +1,61 @@
+# Dependencies
 node_modules
 npm-debug.log*
+
+# Git
 .git
 .gitignore
+
+# Documentation
 README.md
+CLAUDE.md
+superpower.md
+
+# Environment
 .env
+.env.*
+
+# Tests and coverage
 .nyc_output
 coverage
 .coverage
 .coverage/
 .nyc_output/
+
+# Build cache
 .cache/
 .vite/
 dist/
-src/              # Исключаем React исходники
-*.tsx
-*.ts
+
+# React/TypeScript sources (not needed for production)
+src/*.tsx
+src/*.ts
+src/components/
+src/lib/
+
+# Config files not needed in production
 vite.config.js
 components.json
 tsconfig*.json
 tailwind.config.js
 postcss.config.js
+
+# OS files
 .DS_Store
+
+# Downloads (created at runtime)
 downloads/
+
+# Logs
 *.log
+
+# Test files
+test-*.html
+test-*.js
+test-*.cjs
+pinterest_page.html
+
+# Debug files
+start-debug.js
+Dockerfile.debug
+Dockerfile.minimal

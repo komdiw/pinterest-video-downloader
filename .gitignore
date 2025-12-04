@@ -111,17 +111,6 @@ temp/
 .worktrees/
 worktrees/
 
-# React frontend source files (we only need the server version)
-src/backend/
-src-backend/
-*.tsx
-*.ts
-vite.config.js
-*.config.js
-components.json
-!src/server.js
-!src/downloader.js
-
 # Additional build and development files
 .cache/
 .vite/

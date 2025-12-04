@@ -2,15 +2,23 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Install dependencies
+# Install dependencies (production only - no React build needed)
 COPY package*.json ./
 RUN npm ci --only=production && npm cache clean --force
 
 # Copy source files
-COPY . .
+COPY src/ ./src/
+COPY public/ ./public/
 
 # Create downloads directory
 RUN mkdir -p /tmp/downloads
 
-# Run the full Pinterest downloader server
-CMD ["npm", "start"]
+# Set environment variables
+ENV NODE_ENV=production
+ENV DOWNLOADS_DIR=/tmp/downloads
+
+# Expose port (CapRover sets PORT env variable)
+EXPOSE 80
+
+# Run the main server
+CMD ["node", "src/server.js"]
