@@ -6,7 +6,7 @@ console.log('🔥 Starting SIMPLE test server...');
 console.log('📍 Available ports check:');
 
 // Проверим порты
-const testPort = process.env.PORT || 3001;
+const testPort = process.env.PORT || 80;
 console.log('🌍 PORT env:', process.env.PORT);
 console.log('🎯 Using port:', testPort);
 
