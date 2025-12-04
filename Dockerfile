@@ -18,10 +18,10 @@ RUN mkdir -p /tmp/downloads && chown nodejs:nodejs /tmp/downloads
 
 USER nodejs
 
-EXPOSE 8080
+EXPOSE 80
 
 # Health check for CapRover
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD node -e "require('http').get('http://localhost:8080/api/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) }).on('error', () => process.exit(1))"
+  CMD node -e "require('http').get('http://localhost:80/api/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) }).on('error', () => process.exit(1))"
 
 CMD ["npm", "start"]
