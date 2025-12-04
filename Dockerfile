@@ -10,7 +10,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci --only=production && npm cache clean --force
 
-# Копируем исходный код
+# Копируем исходный код (включая debug файл)
 COPY --chown=nodejs:nodejs . .
 
 # Создаем временную директорию для загрузок
@@ -20,8 +20,31 @@ USER nodejs
 
 EXPOSE 80
 
-# Health check for CapRover
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD node -e "require('http').get('http://localhost:80/api/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) }).on('error', () => process.exit(1))"
+# Устанавливаем переменные окружения по умолчанию
+ENV NODE_ENV=production
+ENV PORT=80
+ENV DOWNLOADS_DIR=/tmp/downloads
 
-CMD ["npm", "start"]
+# Health check для CapRover с детальной диагностикой
+HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
+  CMD node -e "
+console.log('🔍 Health check running...');
+const http = require('http');
+const options = { hostname: 'localhost', port: 80, path: '/api/health', timeout: 5000 };
+const req = http.get(options, (res) => {
+  console.log('🏥 Health check status:', res.statusCode);
+  process.exit(res.statusCode === 200 ? 0 : 1);
+});
+req.on('error', (err) => {
+  console.log('❌ Health check error:', err.message);
+  process.exit(1);
+});
+req.on('timeout', () => {
+  console.log('⏰ Health check timeout');
+  req.destroy();
+  process.exit(1);
+});
+"
+
+# Запускаем с диагностикой
+CMD ["sh", "-c", "echo '🚀 Starting Pinterest Video Downloader...' && echo '🌍 Environment:' && echo '  PORT='$PORT && echo '  NODE_ENV='$NODE_ENV && echo '  DOWNLOADS_DIR='$DOWNLOADS_DIR && npm run start:debug"]

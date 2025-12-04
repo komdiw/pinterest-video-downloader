@@ -12,6 +12,16 @@ const app = express();
 const PORT = process.env.PORT || 80;
 const DOWNLOADS_DIR = process.env.DOWNLOADS_DIR || '/tmp/downloads';
 
+// Логируем запуск
+console.log('🚀 Pinterest Video Downloader Server');
+console.log('=====================================');
+console.log('🌍 Environment Variables:');
+console.log('  PORT:', process.env.PORT);
+console.log('  NODE_ENV:', process.env.NODE_ENV);
+console.log('  DOWNLOADS_DIR:', process.env.DOWNLOADS_DIR);
+console.log('📁 Working Directory:', __dirname);
+console.log('👤 User ID:', process.getuid ? process.getuid() : 'unknown');
+
 // Middleware
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
