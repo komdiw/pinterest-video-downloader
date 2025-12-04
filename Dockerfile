@@ -18,16 +18,16 @@ RUN mkdir -p /tmp/downloads && chown nodejs:nodejs /tmp/downloads
 
 USER nodejs
 
-EXPOSE 80
+EXPOSE 3001
 
 # Устанавливаем переменные окружения по умолчанию
 ENV NODE_ENV=production
-ENV PORT=80
+ENV PORT=3001
 ENV DOWNLOADS_DIR=/tmp/downloads
 
 # Health check для CapRover (упрощенный)
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-  CMD node -e "require('http').get('http://localhost:80/api/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) }).on('error', () => process.exit(1))"
+  CMD node -e "require('http').get('http://localhost:3001/api/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) }).on('error', () => process.exit(1))"
 
 # Запускаем debug версию
 CMD ["npm", "run", "start:debug"]

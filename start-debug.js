@@ -16,7 +16,7 @@ console.log('  NODE_ENV:', process.env.NODE_ENV);
 console.log('  DOWNLOADS_DIR:', process.env.DOWNLOADS_DIR);
 
 const app = express();
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors());
