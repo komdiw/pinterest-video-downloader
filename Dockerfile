@@ -18,7 +18,7 @@ ENV NODE_ENV=production
 ENV DOWNLOADS_DIR=/tmp/downloads
 
 # Expose port (CapRover sets PORT env variable)
-EXPOSE 3000
+EXPOSE 5000
 
 # Run the main server
 CMD ["node", "src/server.js"]
