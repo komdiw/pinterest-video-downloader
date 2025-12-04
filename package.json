@@ -1,0 +1,59 @@
+{
+  "name": "pinterest-video-downloader",
+  "version": "1.0.0",
+  "description": "Приложение для загрузки видео из Pinterest",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "web": "node src/server.js",
+    "cli": "node src/index.js",
+    "dev": "node --watch src/server.js",
+    "dev:cli": "node --watch src/index.js",
+    "react": "vite",
+    "react:dev": "vite",
+    "react:build": "vite build",
+    "react:preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pinterest",
+    "video",
+    "downloader",
+    "media"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "fs-extra": "^11.1.1",
+    "liquid-glass-react": "^1.1.1",
+    "lucide-react": "^0.555.0",
+    "multer": "^2.0.2",
+    "progress": "^2.0.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^3.4.18",
+    "three": "^0.181.2",
+    "yargs": "^17.7.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.1",
+    "@vitejs/plugin-react-swc": "^4.2.2",
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.6"
+  }
+}

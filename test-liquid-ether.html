@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquid Ether Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .liquid-ether-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+        }
+
+        .liquid-ether-container canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            opacity: 0.7;
+            mix-blend-mode: screen;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: white;
+            text-align: center;
+        }
+
+        .test-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="liquid-ether-container" id="liquidEther"></div>
+
+    <div class="content">
+        <div class="test-card">
+            <h1>🧪 Liquid Ether Test</h1>
+            <p>Проверка работы Liquid Ether фона</p>
+            <div id="status" class="status">Загрузка...</div>
+            <p><small>Двигайте мышью для проверки интерактивности</small></p>
+        </div>
+    </div>
+
+    <script src="liquid-ether.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const status = document.getElementById('status');
+            const container = document.getElementById('liquidEther');
+
+            try {
+                if (typeof LiquidEther !== 'undefined') {
+                    const liquidEther = new LiquidEther(container, {
+                        colors: ['#5227FF', '#FF9FFC', '#B19EEF'],
+                        mouseForce: 30,
+                        cursorSize: 150,
+                        autoDemo: true,
+                        autoSpeed: 0.8,
+                        autoIntensity: 3,
+                        resolution: 0.8
+                    });
+
+                    status.textContent = '✅ Liquid Ether успешно загружен и работает!';
+                    status.className = 'status success';
+
+                    console.log('Liquid Ether initialized successfully');
+                } else {
+                    throw new Error('LiquidEther class not found');
+                }
+            } catch (error) {
+                status.textContent = '❌ Ошибка: ' + error.message;
+                status.className = 'status error';
+                console.error('Liquid Ether initialization failed:', error);
+            }
+        });
+    </script>
+</body>
+</html>
