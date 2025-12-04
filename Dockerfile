@@ -9,5 +9,8 @@ RUN npm ci --only=production && npm cache clean --force
 # Copy source files
 COPY . .
 
-# Run the app
-CMD ["node", "start-simple.js"]
+# Create downloads directory
+RUN mkdir -p /tmp/downloads
+
+# Run the full Pinterest downloader server
+CMD ["npm", "start"]
