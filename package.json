@@ -10,6 +10,7 @@
     "cli": "node src/index.js",
     "dev": "node --watch src/server.js",
     "dev:cli": "node --watch src/index.js",
+    "build": "echo 'No build needed for static interface'",
     "react": "vite",
     "react:dev": "vite",
     "react:build": "vite build",

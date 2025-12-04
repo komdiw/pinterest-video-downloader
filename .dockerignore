@@ -1,0 +1,25 @@
+node_modules
+npm-debug.log*
+.git
+.gitignore
+README.md
+.env
+.nyc_output
+coverage
+.coverage
+.coverage/
+.nyc_output/
+.cache/
+.vite/
+dist/
+src/              # Исключаем React исходники
+*.tsx
+*.ts
+vite.config.js
+components.json
+tsconfig*.json
+tailwind.config.js
+postcss.config.js
+.DS_Store
+downloads/
+*.log
