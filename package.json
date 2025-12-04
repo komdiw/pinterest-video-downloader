@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node src/server.js",
     "start:debug": "node start-debug.js",
+    "start:simple": "node start-simple.js",
     "web": "node src/server.js",
     "cli": "node src/index.js",
     "dev": "node --watch src/server.js",
