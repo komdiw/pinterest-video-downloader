@@ -6,9 +6,11 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
+    "start:debug": "node start-debug.js",
     "web": "node src/server.js",
     "cli": "node src/index.js",
     "dev": "node --watch src/server.js",
+    "dev:debug": "node --watch start-debug.js",
     "dev:cli": "node --watch src/index.js",
     "build": "echo 'No build needed for static interface'",
     "react": "vite",
